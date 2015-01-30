@@ -1,0 +1,64 @@
+{
+    "name": "example-name-must-be-hyphenated",
+    "version": "0.1.0",
+    "description": "A short example description.",
+    "main": "server.js",
+    "scripts": {
+        "build:js": "npm run lint",
+        "watch:js": "watch 'npm run build:js' ./js/",
+        "build-all:css": "node-sass ./scss/**.scss -o ./dist",
+        "build:css": "node-sass ./scss/style.scss --stdout | autoprefixer -b 'last 10 versions' > ./dist/style.css & say -v Daniel 'SASS completed!'",
+        "watch:css": "watch 'npm run build:css' ./scss/",
+        "build": "npm run build:css",
+        "watch:2": "npm run watch:css",
+        "watch": "parallelshell 'npm run watch:css'",
+        "clean": "rm -r dist/*",
+        "test": "mocha ./js/tests/",
+        "lint": "jshint ./js/**.js",
+        "env": "env",
+        "start": "node heroku-server.js & npm run watch",
+        "open:prod": "open http://example.com",
+        "open:stage": "open http://staging.example.internal",
+        "open:dev": "open http://localhost:3000",
+        "deploy:prod": "git push heroku master",
+        "deploy:stage": "git push origin --all",
+        "postinstall": "[ ! -d scss ] && mkdir scss && mkdir dist && mkdir js && mkdir templates && mkdir js/test; [ ! -f js/app.js ] && npm run prereqs && npm run finish-commits; echo 'doneskis';",
+        "finish-commits": "if [ ! -e '.git' ]; then git init; fi; git add --all . && git commit -am 'initial commit, project setup complete'; git branch gh-pages; echo 'commits finished';",
+        "prereqs": "bower install normalize-scss typeplate-starter-kit jquery lodash pathjs Loader backbone --save; cp ./bower_components/typeplate-starter-kit/css/typeplate.css ./bower_components/typeplate-starter-kit/css/_typeplate.scss; npm run heroku:server && npm run heroku:loader && npm run heroku:procfile && npm run ignores && npm run post-commit && npm run prereqs:appjs && npm run prereqs:index && npm run prereqs:scss;",
+        "prereqs:appjs": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/app.js > ./js/app.js",
+        "prereqs:index": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/index.html > ./index.html",
+        "prereqs:scss": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/style.scss > ./scss/style.scss && curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/mixins.scss > ./scss/mixins.scss",
+        "heroku:procfile": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/Procfile > Procfile",
+        "heroku:server": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/server.js > ./server.js",
+        "heroku:loader": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Sept-2014/Notes/master/examples/extras/heroku-server.js > ./heroku-server.js",
+        "ignores": "echo 'node_modules' > .gitignore; echo '.DS_Store' >> .gitignore;",
+        "post-commit": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/git-hook-post-commit.sh > .git/hooks/post-commit && chmod a+x .git/hooks/post-commit;"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git URL here"
+    },
+    "keywords": [
+        "css",
+        "html",
+        "js"
+    ],
+    "devDependencies": {
+        "jshint": "latest",
+        "browserify": "latest",
+        "mocha": "latest",
+        "chai": "latest",
+        "cssmin": "latest",
+        "autoprefixer": "latest",
+        "node-sass": "latest",
+        "parallelshell": "latest"
+    },
+    "dependencies": {
+        "express": "^4.10.7",
+        "lodash": "latest",
+        "request": "latest",
+        "watch": "^0.13.0"
+    },
+    "author": "The Iron Yard Front End studentz",
+    "license": "MIT"
+}
