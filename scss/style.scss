@@ -14,7 +14,7 @@
  * GRIDS
  */
 
-.grid {
+.etsy-grid {
     width: 100%;
     display: block;
     font-size: 0;
@@ -37,14 +37,13 @@
     }
 }
 
-@include gridify(2, 400);
-@include gridify(4, 600);
+@include gridify(3, 600);
+@include gridify(4, 800);
 
 /**
  * GENERAL
  */
 
-img {max-width:100%;}
 
 body {
     transition: opacity .25s ease;

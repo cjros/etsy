@@ -817,38 +817,35 @@ abbr[title]:hover {
 /**
  * GRIDS
  */
-.grid {
+.etsy-grid {
   width: 100%;
   display: block;
   font-size: 0;
   text-align: justify;
   position: relative; }
-  .grid > * {
+  .etsy-grid > * {
     font-size: medium;
     text-align: left;
     display: inline-block;
     width: 100%;
     vertical-align: top; }
-  .grid:after {
+  .etsy-grid:after {
     display: inline-block;
     width: 100%;
     content: "";
     font-size: medium; }
 
-@media only screen and (min-width: 400px) {
-  .grid-2-400 > * {
-    width: 48%; } }
-
 @media only screen and (min-width: 600px) {
-  .grid-4-600 > * {
+  .grid-3-600 > * {
+    width: 31.33333%; } }
+
+@media only screen and (min-width: 800px) {
+  .grid-4-800 > * {
     width: 23%; } }
 
 /**
  * GENERAL
  */
-img {
-  max-width: 100%; }
-
 body {
   -webkit-transition: opacity .25s ease;
           transition: opacity .25s ease; }
