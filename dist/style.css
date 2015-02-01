@@ -817,30 +817,35 @@ abbr[title]:hover {
 /**
  * GRIDS
  */
-.etsy-grid {
+.grid {
   width: 100%;
   display: block;
   font-size: 0;
   text-align: justify;
   position: relative; }
-  .etsy-grid > * {
+  .grid > * {
+    border: 1px solid black;
     font-size: medium;
     text-align: left;
     display: inline-block;
     width: 100%;
     vertical-align: top; }
-  .etsy-grid:after {
+  .grid:after {
     display: inline-block;
     width: 100%;
     content: "";
     font-size: medium; }
 
 @media only screen and (min-width: 600px) {
-  .grid-3-600 > * {
-    width: 31.33333%; } }
+  .grid-2-600 > * {
+    width: 48%; } }
 
 @media only screen and (min-width: 800px) {
-  .grid-4-800 > * {
+  .grid-3-800 > * {
+    width: 31.33333%; } }
+
+@media only screen and (min-width: 1024px) {
+  .grid-4-1024 > * {
     width: 23%; } }
 
 /**
@@ -849,4 +854,7 @@ abbr[title]:hover {
 body {
   -webkit-transition: opacity .25s ease;
           transition: opacity .25s ease; }
+
+.header > * {
+  text-align: center; }
 

@@ -1,5 +1,7 @@
-<div id="<%= listing_id %>">
-<p><%= title %></p>
-<p><%= description %></p>
-<p><%= price %></p>
+<% _.forEach(feature, function(m) { %>
+<div id="<%= m.listing_id %>">
+	<p><%= m.title %></p>
+	<p><%= m.description %></p>
+	<p><%= m.price %></p>
 </div>
+<% }); %>
