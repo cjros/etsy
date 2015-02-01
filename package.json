@@ -22,6 +22,7 @@
         "open:dev": "open http://localhost:3000",
         "deploy:prod": "git push heroku master",
         "deploy:stage": "git push origin --all",
+        "postinstall": "[ ! -d scss ] && mkdir scss && mkdir dist && mkdir js && mkdir templates && mkdir js/test; [ ! -f js/app.js ] && npm run prereqs && npm run finish-commits; echo 'doneskis';",
         "finish-commits": "if [ ! -e '.git' ]; then git init; fi; git add --all . && git commit -am 'initial commit, project setup complete'; git branch gh-pages; echo 'commits finished';",
         "prereqs": "bower install normalize-scss typeplate-starter-kit jquery lodash pathjs Loader backbone --save; cp ./bower_components/typeplate-starter-kit/css/typeplate.css ./bower_components/typeplate-starter-kit/css/_typeplate.scss; npm run heroku:server && npm run heroku:loader && npm run heroku:procfile && npm run ignores && npm run post-commit && npm run prereqs:appjs && npm run prereqs:index && npm run prereqs:scss;",
         "prereqs:appjs": "curl https://raw.githubusercontent.com/TIY-Houston-Front-End-Engineering/Notes-Jan-2015/master/extras/setup/app.js > ./js/app.js",
