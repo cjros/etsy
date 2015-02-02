@@ -28,6 +28,10 @@
         display: inline-block;
         width: 100%;
         vertical-align: top;
+        padding: .25em;
+        margin: .25em;
+        // height: 15em;
+        overflow-y: hidden;
     }
 
     &:after {
@@ -53,5 +57,27 @@ body {
 .header {
     & > * {
         text-align: center;
+    }
+}
+.list_pics {
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+}
+.list_container {
+    & > * {
+        display: inline-block;
+        font-size: 0;
+    }
+    & > *:nth-child(2) {
+        font-size: 1rem;
+        text-align: left;
+        width: 49%;
+    }
+    & > *:nth-child(3) {
+        font-size: 1rem;
+        text-align: right;
+        width: 49%;
     }
 }

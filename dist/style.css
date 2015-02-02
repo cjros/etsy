@@ -829,7 +829,10 @@ abbr[title]:hover {
     text-align: left;
     display: inline-block;
     width: 100%;
-    vertical-align: top; }
+    vertical-align: top;
+    padding: .25em;
+    margin: .25em;
+    overflow-y: hidden; }
   .grid:after {
     display: inline-block;
     width: 100%;
@@ -857,4 +860,22 @@ body {
 
 .header > * {
   text-align: center; }
+
+.list_pics {
+  max-width: 100%; }
+
+a {
+  text-decoration: none; }
+
+.list_container > * {
+  display: inline-block;
+  font-size: 0; }
+.list_container > *:nth-child(2) {
+  font-size: 1rem;
+  text-align: left;
+  width: 49%; }
+.list_container > *:nth-child(3) {
+  font-size: 1rem;
+  text-align: right;
+  width: 49%; }
 

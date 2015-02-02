@@ -1,7 +1,9 @@
 <% _.forEach(feature, function(m) { %>
-<div id="<%= m.listing_id %>">
-	<p><%= m.title %></p>
-	<p><%= m.description %></p>
-	<p><%= m.price %></p>
+<a href="<%= m.url %>">
+<div class="list_container" id="<%= m.listing_id %>">
+	<img class="list_pics" src="<%= m.Images[0].url_570xN %>" />
+	<div class="views">Views: <%= m.views %></div>
+	<div class="price"><%= m.price %> <%= m.currency_code %></div>
 </div>
+</a>
 <% }); %>
