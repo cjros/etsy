@@ -824,7 +824,7 @@ abbr[title]:hover {
   text-align: justify;
   position: relative; }
   .grid > * {
-    border: 1px solid black;
+    border: 2px solid black;
     font-size: medium;
     text-align: left;
     display: inline-block;
@@ -856,7 +856,8 @@ abbr[title]:hover {
  */
 body {
   -webkit-transition: opacity .25s ease;
-          transition: opacity .25s ease; }
+          transition: opacity .25s ease;
+  background-color: whitesmoke; }
 
 .header > * {
   text-align: center; }
@@ -865,7 +866,13 @@ body {
   max-width: 100%; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: gray; }
+  a:visited {
+    color: lightblue;
+    background-color: whitesmoke; }
+  a:hover {
+    border: 3px solid red; }
 
 .list_container > * {
   display: inline-block;
@@ -878,4 +885,8 @@ a {
   font-size: 1rem;
   text-align: right;
   width: 49%; }
+
+.header > * {
+  display: inline-block;
+  text-align: left; }
 

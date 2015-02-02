@@ -22,7 +22,7 @@
     position: relative;
 
     & > * {
-        border: 1px solid black;
+        border: 2px solid black;
         font-size: medium;
         text-align: left;
         display: inline-block;
@@ -53,6 +53,7 @@
 
 body {
     transition: opacity .25s ease;
+    background-color: whitesmoke;
 }
 .header {
     & > * {
@@ -64,6 +65,14 @@ body {
 }
 a {
     text-decoration: none;
+    color: gray;
+    &:visited {
+        color: lightblue;
+        background-color: whitesmoke;
+    }
+    &:hover {
+        border: 3px solid red;
+    }
 }
 .list_container {
     & > * {
@@ -80,4 +89,8 @@ a {
         text-align: right;
         width: 49%;
     }
+}
+.header > * {
+    display: inline-block;
+    text-align: left;
 }
