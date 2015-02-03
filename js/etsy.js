@@ -1,3 +1,13 @@
+//fixes needed
+//-be able to click out of detailed view
+//-throw error if search results cannot be found (DONE.. sorta)
+// --get rid of spaces in URL after search (DONE)
+//-create promises to help cache info and not make site
+//...load like you have a freaking 56k AOL premium connection
+
+//extras
+//-add pagination at the bottom
+
 ;
 (function() {
 
@@ -30,7 +40,8 @@
         $("#form").on("submit", function(e) {
             event.preventDefault();
             var look = this.querySelector("input").value;
-            window.location.hash = '#/search/' + look;
+            var nospace = look.split(" ").join("+");
+            window.location.hash = '#/search/' + nospace;
         })
 
     };
@@ -94,10 +105,14 @@
                 this.loadTemplate("results"),
                 this.dataSearchListings(tags)
             ).then(function(html, searches) {
+            	console.log(arguments);
+            	if (searches.length <= 0) {
+            		return alert("No results, please try again");
+            	}
                 var temp3 = _.template(html);
                 var results = document.querySelector(".results");
                 results.innerHTML = temp3( {searches: searches, tags: tags} ); //in template, probably need to create loop to go through array of keywords
-            	console.log( {searches: searches});
+            	
             })
         }
     }
