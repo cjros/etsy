@@ -55,6 +55,7 @@
 body {
     transition: opacity .25s ease;
     background-color: whitesmoke;
+    font-family: "Lato", sans-serif;
 }
 .header {
     & > * {
@@ -66,9 +67,9 @@ body {
 }
 a {
     text-decoration: none;
-    color: gray;
+    color: black;
     &:visited {
-        color: lightblue;
+        color: red;
         background-color: whitesmoke;
     }
     &:hover {
@@ -109,6 +110,7 @@ a {
         margin: auto;
         background-color: whitesmoke;
         border: 5px solid black;
+        border-radius: 10px 10px;
         top: 5em;
         // height: 40em;
         // overflow-y: auto;
@@ -129,11 +131,24 @@ a {
         margin: 0 auto;
     }
     & > .link {
+        padding: .25em;
+        text-indent: 0;
         font-weight: bold;
         font-size: 1.75em;
         text-align: center;
         margin: 0 auto;
-        display: block;
+        display: inline-block;
+        border: 1px solid black;
+        &:hover {
+            background-color: black;
+            color: white;
+            & > a {
+                color: white;
+                border: none;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
     }
     & > .description {
         text-align: left;

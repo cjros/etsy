@@ -860,7 +860,8 @@ abbr[title]:hover {
 body {
   -webkit-transition: opacity .25s ease;
           transition: opacity .25s ease;
-  background-color: whitesmoke; }
+  background-color: whitesmoke;
+  font-family: "Lato", sans-serif; }
 
 .header > * {
   text-align: center; }
@@ -870,9 +871,9 @@ body {
 
 a {
   text-decoration: none;
-  color: gray; }
+  color: black; }
   a:visited {
-    color: lightblue;
+    color: red;
     background-color: whitesmoke; }
   a:hover {
     border: 3px solid red; }
@@ -906,6 +907,8 @@ a {
     margin: auto;
     background-color: whitesmoke;
     border: 5px solid black;
+    -webkit-border-radius: 10px 10px;
+            border-radius: 10px 10px;
     top: 5em;
     right: 0;
     left: 0; }
@@ -920,11 +923,22 @@ a {
     font-weight: bold;
     margin: 0 auto; }
   .dview > .link {
+    padding: .25em;
+    text-indent: 0;
     font-weight: bold;
     font-size: 1.75em;
     text-align: center;
     margin: 0 auto;
-    display: block; }
+    display: inline-block;
+    border: 1px solid black; }
+    .dview > .link:hover {
+      background-color: black;
+      color: white; }
+      .dview > .link:hover > a {
+        color: white;
+        border: none;
+        text-align: center;
+        margin: 0 auto; }
   .dview > .description {
     text-align: left; }
   .dview > img {
