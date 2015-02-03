@@ -10,7 +10,8 @@
 
             },
             getListingDetails: function(listing_id) {
-                self.showDetailedView(listing_id)
+                self.showDetailedView(listing_id);
+                document.querySelector(".detailer").style.opacity= "1";
             },
             search: function(keywords) {
             	$(document).ready(function() {

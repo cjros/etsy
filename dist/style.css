@@ -890,3 +890,23 @@ a {
   display: inline-block;
   text-align: left; }
 
+#feeds {
+  position: relative;
+  width: 100%;
+  text-align: center; }
+  #feeds > .detailer {
+    opacity: 0;
+    display: inline-block;
+    z-index: 1;
+    position: absolute;
+    max-width: 800px;
+    margin: auto;
+    background-color: whitesmoke;
+    border: 5px solid black;
+    top: 5em;
+    right: 0;
+    left: 0; }
+
+.dview > img {
+  max-width: 100%; }
+

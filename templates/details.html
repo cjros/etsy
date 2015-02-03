@@ -1,8 +1,10 @@
 <div class="dview">
-    <p>HELLO THIS IS A TEST TO SEE IF BACKBONE IS WORKING</p>
-    <p>I REALLY REALLY REALLY HOEP THIS FUCKING WORKS. If not, I guess i'm screwed. The end.</p>
-	<p><%= detail_info.title %></p>
+	<h2><%= detail_info.title %></h2>
+	<img src="<%= detail_info.Images[0]['url_fullxfull'] %>" >
 	<p><%= detail_info.description %></p>
+	<p><%= detail_info.quantity %></p>
+	<p><%= detail_info.price %><%= detail_info.currency_code %></p>
+	<a href="<%= detail_info.url %>">See it on Etsy.com</a>
 	<!-- img
 	multiple
 	quantity
