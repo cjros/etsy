@@ -31,7 +31,7 @@
         padding: .25em;
         margin: .25em;
         // height: 15em;
-        overflow-y: hidden;
+        // overflow-y: hidden;
     }
 
     &:after {
@@ -42,9 +42,10 @@
     }
 }
 
-@include gridify(2, 600);
-@include gridify(3, 800);
-@include gridify(4, 1024);
+@include gridify(2, 400);
+@include gridify(3, 600);
+@include gridify(4, 800);
+@include gridify(5, 1024);
 
 /**
  * GENERAL
@@ -109,19 +110,37 @@ a {
         background-color: whitesmoke;
         border: 5px solid black;
         top: 5em;
-     
+        // height: 40em;
+        // overflow-y: auto;
         right: 0;
         left: 0;
 
     }
 }
 .dview {
+    padding: .5em;
+    & > h2 {
+        text-align: center;
+    }
+    & > .quantity, .price_cur {
+        display: inline-block;
+        font-size: 2.5em;
+        font-weight: bold;
+        margin: 0 auto;
+    }
+    & > .link {
+        font-weight: bold;
+        font-size: 1.75em;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    & > .description {
+        text-align: left;
+    }
  
     & > img {
         max-width: 100%;
-    }
-
-    
-    
+    }  
 
 }

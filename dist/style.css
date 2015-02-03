@@ -831,25 +831,28 @@ abbr[title]:hover {
     width: 100%;
     vertical-align: top;
     padding: .25em;
-    margin: .25em;
-    overflow-y: hidden; }
+    margin: .25em; }
   .grid:after {
     display: inline-block;
     width: 100%;
     content: "";
     font-size: medium; }
 
-@media only screen and (min-width: 600px) {
-  .grid-2-600 > * {
+@media only screen and (min-width: 400px) {
+  .grid-2-400 > * {
     width: 48%; } }
 
-@media only screen and (min-width: 800px) {
-  .grid-3-800 > * {
+@media only screen and (min-width: 600px) {
+  .grid-3-600 > * {
     width: 31.33333%; } }
 
-@media only screen and (min-width: 1024px) {
-  .grid-4-1024 > * {
+@media only screen and (min-width: 800px) {
+  .grid-4-800 > * {
     width: 23%; } }
+
+@media only screen and (min-width: 1024px) {
+  .grid-5-1024 > * {
+    width: 18%; } }
 
 /**
  * GENERAL
@@ -907,6 +910,23 @@ a {
     right: 0;
     left: 0; }
 
-.dview > img {
-  max-width: 100%; }
+.dview {
+  padding: .5em; }
+  .dview > h2 {
+    text-align: center; }
+  .dview > .quantity, .dview .price_cur {
+    display: inline-block;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0 auto; }
+  .dview > .link {
+    font-weight: bold;
+    font-size: 1.75em;
+    text-align: center;
+    margin: 0 auto;
+    display: block; }
+  .dview > .description {
+    text-align: left; }
+  .dview > img {
+    max-width: 100%; }
 

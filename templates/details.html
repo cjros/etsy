@@ -1,15 +1,8 @@
 <div class="dview">
 	<h2><%= detail_info.title %></h2>
-	<img src="<%= detail_info.Images[0]['url_fullxfull'] %>" >
-	<p><%= detail_info.description %></p>
-	<p><%= detail_info.quantity %></p>
-	<p><%= detail_info.price %><%= detail_info.currency_code %></p>
-	<a href="<%= detail_info.url %>">See it on Etsy.com</a>
-	<!-- img
-	multiple
-	quantity
-	description
-	seller
-	price
-	shopper id -->
+	<img src="<%= detail_info.Images[0]['url_fullxfull'] %>" />
+	<p class="quantity">Quantity: <%= detail_info.quantity %></p>
+	<p class="price_cur">Price: <%= detail_info.price %> <%= detail_info.currency_code %></p>
+	<p class="link"><a href="<%= detail_info.url %>">See it on Etsy.com</a></p><br>
+	<p class="description">Description: <br><%= detail_info.description %></p>
 </div>
