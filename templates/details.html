@@ -1,8 +1,10 @@
 <div class="dview">
+	<button id="goBack"><<</button>
+	<button id="goNext">>></button>
 	<h2><%= detail_info.title %></h2>
 	<img src="<%= detail_info.Images[0]['url_fullxfull'] %>" />
 	<p class="quantity">Quantity: <%= detail_info.quantity %></p>
 	<p class="price_cur">Price: <%= detail_info.price %> <%= detail_info.currency_code %></p>
-	<p class="link"><a href="<%= detail_info.url %>">See it on Etsy.com</a></p><br>
+	<p class="link"><a href="<%= detail_info.url %>" target="_blank">See it on Etsy.com</a></p><br>
 	<p class="description">Description: <br><%= detail_info.description %></p>
 </div>

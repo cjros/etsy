@@ -1,31 +1,31 @@
 //fixes needed
 //-be able to click out of detailed view
-//-throw error if search results cannot be found (DONE.. sorta)
-// --get rid of spaces in URL after search (DONE)
 //-create promises to help cache info and not make site
 //...load like you have a freaking 56k AOL premium connection
 
-//extras
-//-add pagination at the bottom
+//hard mode
+//store ids in an array
+//create on.button changes to move to next of the array
 
 ;
 (function() {
-
     function Etsy() {
         var self = this;
-        //backbone routing
+        this.featureArr = [];
+        this.searchArr = [];
+
         var etsyRouter = Backbone.Router.extend({
             routes: {
-
                 ":listing_id": "getListingDetails",
                 "search/:tags": "startSearch"
             },
             getListingDetails: function(listing_id) {
                 self.showDetailedView(listing_id);
                 document.querySelector(".detailer").style.opacity = "1";
+            
+            	self.changeDetailPage(listing_id);
             },
             startSearch: function(tags) {
-                // document.querySelector(".actives").style.opacity = "0";
                 self.showResults(tags);
                 document.querySelector(".detailer").style.opacity= "0";
             },
@@ -36,25 +36,25 @@
         var router = new etsyRouter();
 
         this.showFeatured();
-        //.on() for submit?
-        $("#form").on("submit", function(e) {
+        
+        //used for the search box
+        $("#form").on("submit", function(event) {
             event.preventDefault();
             var look = this.querySelector("input").value;
             var nospace = look.split(" ").join("+");
             window.location.hash = '#/search/' + nospace;
         })
-
     };
 
     Etsy.prototype = {
-        //learn to fucking write promises...
-        //page loading like dial-up connection
+
         getFeaturedData: function() {
             return $.getJSON("https://openapi.etsy.com/v2/featured_treasuries/listings.js?includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
+                	
+                	self.featureArr = d.results.map(function(a) { return a['listing_id'] });
+                	console.log(self.featureArr);
                     return d.results;
-                    // var info = listings['results'].map(function(l) { return l });
-                    // return info;
                 });
         },
         getDetailedData: function(listing_id) {
@@ -66,7 +66,9 @@
         dataSearchListings: function(tags) {
             return $.getJSON("https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
-                    console.log(arguments);
+
+                	self.searchArr = d.results.map(function(a) { return a['listing_id'] });
+                	console.log(self.searchArr);
                     return d.results;
                 });
         },
@@ -82,10 +84,7 @@
             ).then(function(html, feature) {
                 var temp = _.template(html);
                 var main = document.querySelector(".actives");
-                // debugger;
-                main.innerHTML = temp({
-                    feature: feature
-                });
+                main.innerHTML = temp( {feature: feature} );
             })
         },
         showDetailedView: function(listing_id) {
@@ -95,9 +94,7 @@
             ).then(function(html, detail_info) {
                 var temp2 = _.template(html);
                 var deets = document.querySelector(".detailer");
-                deets.innerHTML = temp2({
-                    detail_info: detail_info[0]
-                });
+                deets.innerHTML = temp2( {detail_info: detail_info[0]} );
             })
         },
         showResults: function(tags) {
@@ -111,9 +108,34 @@
             	}
                 var temp3 = _.template(html);
                 var results = document.querySelector(".results");
-                results.innerHTML = temp3( {searches: searches, tags: tags} ); //in template, probably need to create loop to go through array of keywords
-            	
+                results.innerHTML = temp3( {searches: searches} );
             })
+        },
+        changeDetailPage: function(listing_id) {
+        	// debugger;
+        	var self = this;
+        	//testing backbutton on detailed view
+	        $(".detailer").delegate("#goBack", "click", function(event) {
+		    	event.preventDefault();
+		    	//how to grab info from a sibling
+		    	console.log("hi");
+
+
+		    	for (var i = 0; i < self.featureArr.length; i++) {
+		    		if (listing_id === self.featureArr[i]) {
+		    			listing_id = self.featureArr[i - 1];
+		    			console.log(listing_id);
+		    			return window.location.hash = "#" + listing_id
+		    		}
+		    	}
+		    	//this needs to be in the a loop for arrays of listing_ids
+				// !!!!!window.location.hash = "#" + listing_id;
+				//connect listing_id from backbone to link to here and the array
+				//grab current id to know where to start
+				//use array from results or featured items to cycle through
+				// if listing_id matches one in array, counter++ then
+				//go move to the array index before it.
+	    	});
         }
     }
 

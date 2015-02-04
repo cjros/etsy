@@ -111,7 +111,7 @@ a {
         background-color: whitesmoke;
         border: 5px solid black;
         border-radius: 10px 10px;
-        top: 5em;
+        top: 3em;
         // height: 40em;
         // overflow-y: auto;
         right: 0;
@@ -120,6 +120,7 @@ a {
     }
 }
 .dview {
+    position: relative;
     padding: .5em;
     & > h2 {
         text-align: center;
@@ -157,5 +158,14 @@ a {
     & > img {
         max-width: 100%;
     }  
-
+}
+#goBack {
+    position: absolute;
+    top: 50%;
+    left: 1em;
+}
+#goNext {
+    position: absolute;
+    top: 50%;
+    right: 1em;
 }

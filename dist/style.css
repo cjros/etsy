@@ -909,11 +909,12 @@ a {
     border: 5px solid black;
     -webkit-border-radius: 10px 10px;
             border-radius: 10px 10px;
-    top: 5em;
+    top: 3em;
     right: 0;
     left: 0; }
 
 .dview {
+  position: relative;
   padding: .5em; }
   .dview > h2 {
     text-align: center; }
@@ -943,4 +944,14 @@ a {
     text-align: left; }
   .dview > img {
     max-width: 100%; }
+
+#goBack {
+  position: absolute;
+  top: 50%;
+  left: 1em; }
+
+#goNext {
+  position: absolute;
+  top: 50%;
+  right: 1em; }
 
