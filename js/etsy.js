@@ -18,8 +18,14 @@
 
         var etsyRouter = Backbone.Router.extend({
             routes: {
+                "": "home",
                 ":listing_id": "getListingDetails",
                 "search/:tags": "startSearch"
+            },
+            home: function() {
+                self.showFeatured();
+                document.querySelector(".detailer").style.opacity = "0";
+
             },
             getListingDetails: function(listing_id) {
                 self.showDetailedView(listing_id);
@@ -37,14 +43,15 @@
         })
         var router = new etsyRouter();
 
-        this.showFeatured();
+        //this.showFeatured();
         
         //used for the search box
         $("#form").on("submit", function(event) {
             event.preventDefault();
             var look = this.querySelector("input").value;
             var nospace = look.split(" ").join("+");
-            window.location.hash = '#/search/' + nospace;
+            console.log(nospace);
+            window.location.hash = 'search/' + nospace;
         })
     };
 
@@ -97,6 +104,10 @@
                 var temp2 = _.template(html);
                 var deets = document.querySelector(".detailer");
                 deets.innerHTML = temp2( {detail_info: detail_info[0]} );
+            })
+            $(".detailer").delegate("#quit", "click", function(event) {
+            	event.preventDefault();
+            	window.location.hash = "";
             })
         },
         showResults: function(tags) {

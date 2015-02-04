@@ -866,6 +866,16 @@ body {
 .header > * {
   text-align: center; }
 
+#form {
+  display: block;
+  text-align: center; }
+
+#filter {
+  display: block;
+  text-align: center; }
+  #filter > * {
+    display: inline-block; }
+
 .list_pics {
   max-width: 100%; }
 
@@ -954,4 +964,16 @@ a {
   position: absolute;
   top: 50%;
   right: 1em; }
+
+#quit {
+  position: absolute;
+  top: -2.5em;
+  right: -1.75em;
+  padding: 1em;
+  height: 4em;
+  width: 4em;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  border: 3px solid red;
+  background-color: whitesmoke; }
 
