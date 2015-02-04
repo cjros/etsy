@@ -1,19 +1,24 @@
 //easy mode bugs and to-do
-//--be able to click out of detailed view
 //--create promises to help cache info and not make site...
 //..load like you have a freaking 56k AOL connection
 
 
 //hard mode bugs and to-do
-//--get rid of errors when button clicking out of array; throws #NaN
-//--UNIFY YOUR DAMN CODE! shit is on overload; too repetitive; figure out patterns
+//--get rid of errors when previous/forward buttons
+//clicking out of array; throws #NaN
 
+
+//////////////////////////
+//--UNIFY YOUR DAMN CODE! SHIT IS ON OVERLOAD; 
+//TOO REPETITIVE; FIGURE OUT PATTERNS
+////////////////////////
 
 ;
 (function() {
     function Etsy() {
         this.featureArr = [];
         this.searchArr = [];
+        this.saveTagsforButton = []; //split("+") if tag has spaces
         var self = this;
 
         var etsyRouter = Backbone.Router.extend({
@@ -43,14 +48,10 @@
         })
         var router = new etsyRouter();
 
-        //this.showFeatured();
-        
-        //used for the search box
         $("#form").on("submit", function(event) {
             event.preventDefault();
             var look = this.querySelector("input").value;
             var nospace = look.split(" ").join("+");
-            console.log(nospace);
             window.location.hash = 'search/' + nospace;
         })
     };
@@ -62,7 +63,6 @@
             return $.getJSON("https://openapi.etsy.com/v2/featured_treasuries/listings.js?includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
                 	self.featureArr = d.results.map(function(a) { return a['listing_id'] });
-                	// console.log(self.featureArr);
                     return d.results;
                 });
         },
@@ -74,10 +74,10 @@
         },
         dataSearchListings: function(tags) {
         	var self = this;
+            self.saveTagsforButton = tags.split("+");
             return $.getJSON("https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
                 	self.searchArr = d.results.map(function(a) { return a['listing_id'] });
-                	console.log(self.searchArr);
                     return d.results;
                 });
         },
@@ -97,6 +97,7 @@
             })
         },
         showDetailedView: function(listing_id) {
+            var self = this;
             $.when(
                 this.loadTemplate("details"),
                 this.getDetailedData(listing_id)
@@ -107,7 +108,11 @@
             })
             $(".detailer").delegate("#quit", "click", function(event) {
             	event.preventDefault();
-            	window.location.hash = "";
+                if (self.searchArr.length > 0) {
+                    window.location.hash = "search/" + self.saveTagsforButton.join("+");
+                } else {
+                    window.location.hash = "";
+                }
             })
         },
         showResults: function(tags) {
@@ -115,7 +120,6 @@
                 this.loadTemplate("results"),
                 this.dataSearchListings(tags)
             ).then(function(html, searches) {
-            	// console.log(arguments);
             	if (searches.length <= 0) {
             		return alert("No results, please try again");
             	}
