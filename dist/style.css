@@ -917,9 +917,7 @@ a {
   width: 100%;
   text-align: center; }
   #feeds > .detailer {
-    opacity: 0;
     display: inline-block;
-    z-index: 1;
     position: absolute;
     max-width: 800px;
     margin: auto;

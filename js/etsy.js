@@ -30,20 +30,25 @@
                 ":listing_id": "getListingDetails",
                 "search/:tags": "startSearch"
             },
-            home: function() {
+            home: function() {    
+                document.querySelector(".detailer").style.visibility = "hidden";
+                document.querySelector(".actives").style.opacity = "1";
+                document.querySelector(".actives").style.pointerEvents = "auto";
                 self.showFeatured();
-                document.querySelector(".detailer").style.opacity = "0";
-
             },
             getListingDetails: function(listing_id) {
+                document.querySelector(".detailer").style.visibility = "visible";
+                document.querySelector(".actives").style.opacity = ".3";
+                document.querySelector(".actives").style.pointerEvents = "none";
                 self.showDetailedView(listing_id);
-                document.querySelector(".detailer").style.opacity = "1";
             
             	self.changeDetailPage(listing_id);
             },
             startSearch: function(tags) {
+                document.querySelector(".detailer").style.visibility= "hidden";
+                document.querySelector(".actives").style.opacity = "1";
+                document.querySelector(".actives").style.pointerEvents = "auto";
                 self.showResults(tags);
-                document.querySelector(".detailer").style.opacity= "0";
             },
             initialize: function() {
                 Backbone.history.start();
