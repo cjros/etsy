@@ -929,6 +929,10 @@ a {
     right: 0;
     left: 0; }
 
+.actives {
+  -webkit-transition: opacity 2s ease;
+          transition: opacity 2s ease; }
+
 .dview {
   position: relative;
   padding: .5em; }

@@ -138,6 +138,10 @@ a {
 
     }
 }
+.actives {
+    transition: opacity 2s ease;
+}
+
 .dview {
     position: relative;
     padding: .5em;
