@@ -16,6 +16,9 @@
 ;
 (function() {
     function Etsy() {
+        this.filteredFeature = [];
+        this.filteredSearch = [];
+
         this.featureArr = [];
         this.searchArr = [];
         this.saveTagsforButton = []; //split("+") if tag has spaces
@@ -48,11 +51,41 @@
         })
         var router = new etsyRouter();
 
+        //for search box
         $("#form").on("submit", function(event) {
             event.preventDefault();
             var look = this.querySelector("input").value;
             var nospace = look.split(" ").join("+");
             window.location.hash = 'search/' + nospace;
+        })
+        
+        //nightmare test FILTER
+        //for items with more than three picture
+        //use .trigger to enable and disable?
+        $("#filter").on("change", "input[type='checkbox'][class='threePics']", function() {
+            //if checkbox is checked:::
+            if(this.checked) {
+                if(self.searchArr.length > 0) {
+                   var testing = self.filteredSearch.map(function (val, index, array) {
+                    // console.log(arguments);
+                    // debugger;
+                        if (val.Images.length >= 3) {
+                            return val;
+                        } else {
+                            return null;
+                        }
+                    })
+                   // testing.forEach(function(val, index, array) {
+                   //  if (val !== null) {
+                   //      var check = [].push(val);
+                   //  }
+                   // })
+                   console.log(testing);
+                   // console.log(check);
+                } 
+            } else {
+                console.log("bye");
+            }
         })
     };
 
@@ -60,14 +93,18 @@
 
         getFeaturedData: function() {
         	var self = this;
-            return $.getJSON("https://openapi.etsy.com/v2/featured_treasuries/listings.js?includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
+            return $.getJSON("https://openapi.etsy.com/v2/featured_treasuries/listings.js?includes=Images&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
+                    //should probably put the .on() here so i can
+                    //replace d.results with the new filtered array
+                    self.filteredFeature = d.results.map(function(a) { return a });
+                    console.log(self.filteredFeature);
                 	self.featureArr = d.results.map(function(a) { return a['listing_id'] });
                     return d.results;
                 });
         },
         getDetailedData: function(listing_id) {
-            return $.getJSON("https://openapi.etsy.com/v2/listings/" + listing_id + ".js?includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
+            return $.getJSON("https://openapi.etsy.com/v2/listings/" + listing_id + ".js?includes=Images&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
                     return d.results;
                 });
@@ -75,8 +112,10 @@
         dataSearchListings: function(tags) {
         	var self = this;
             self.saveTagsforButton = tags.split("+");
-            return $.getJSON("https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&includes=Images:1&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
+            return $.getJSON("https://openapi.etsy.com/v2/listings/active.js?keywords=" + tags + "&includes=Images&callback=?&api_key=v8b5h6fqelovdop2ja8usrgm")
                 .then(function(d, s, p) {
+                    self.filteredSearch = d.results.map(function(a) { return a });
+                    console.log(self.filteredSearch);
                 	self.searchArr = d.results.map(function(a) { return a['listing_id'] });
                     return d.results;
                 });
@@ -164,6 +203,9 @@
 			    	})
 			    }
 	    	});
+        },
+        filterItems: function() {
+
         }
     }
 
