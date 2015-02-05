@@ -902,11 +902,11 @@ a {
 .list_container > *:nth-child(2) {
   font-size: 1rem;
   text-align: left;
-  width: 49%; }
+  width: 48.5%; }
 .list_container > *:nth-child(3) {
   font-size: 1rem;
   text-align: right;
-  width: 49%; }
+  width: 48.5%; }
 
 .header > * {
   display: inline-block;
