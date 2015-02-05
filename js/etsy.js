@@ -104,7 +104,7 @@
                     //should probably put the .on() here so i can
                     //replace d.results with the new filtered array
                     self.filteredFeature = d.results.map(function(a) { return a });
-                    console.log(self.filteredFeature);
+                    // console.log(self.filteredFeature);
                 	self.featureArr = d.results.map(function(a) { return a['listing_id'] });
                     return d.results;
                 });
@@ -136,6 +136,8 @@
                 this.loadTemplate("items"),
                 this.getFeaturedData()
             ).then(function(html, feature) {
+                // debugger;
+                // console.log(feature);
                 var temp = _.template(html);
                 var main = document.querySelector(".actives");
                 main.innerHTML = temp( {feature: feature} );
@@ -209,9 +211,6 @@
 			    	})
 			    }
 	    	});
-        },
-        filterItems: function() {
-
         }
     }
 

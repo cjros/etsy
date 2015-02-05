@@ -1,9 +1,13 @@
-<% _.forEach(feature, function(m) { %>
+<% _.forEach(feature, function(m, i, a) { %>
+<% if (m.Images) { %>
 <a href="#<%= m.listing_id %>">
 <div class="list_container">
-	<img class="list_pics" src="<%= m.Images[0].url_570xN %>" />
+	<img class="list_pics" src="<%= m.Images[0].url_570xN %>" />	
 	<div class="views">Views: <%= m.views %></div>
 	<div class="price"><%= m.price %> <%= m.currency_code %></div>
 </div>
 </a>
-<% }); %>
+<%	} else {
+		return true;
+	}
+ }) %>
