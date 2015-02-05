@@ -6,6 +6,7 @@
 //hard mode bugs and to-do
 //--get rid of errors when previous/forward buttons
 //clicking out of array; throws #NaN
+//--add onkeypress(down)?
 
 
 //////////////////////////
@@ -38,7 +39,7 @@
             },
             getListingDetails: function(listing_id) {
                 document.querySelector(".detailer").style.visibility = "visible";
-                document.querySelector(".actives").style.opacity = ".3";
+                document.querySelector(".actives").style.opacity = ".2";
                 document.querySelector(".actives").style.pointerEvents = "none";
                 self.showDetailedView(listing_id);
             

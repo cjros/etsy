@@ -866,7 +866,7 @@ body {
 .title {
   width: 100%;
   display: inline-block;
-  padding: .5em;
+  padding: .25em;
   background-color: red;
   color: white;
   border-bottom: 1px solid maroon; }
@@ -963,23 +963,45 @@ a {
 
 #goBack {
   position: absolute;
-  top: 50%;
-  left: 1em; }
+  padding: 1em;
+  top: 30%;
+  left: -5em;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  font-size: 1.5em;
+  font-weight: bold; }
+  #goBack:hover {
+    background-color: black;
+    color: whitesmoke;
+    border-color: whitesmoke; }
 
 #goNext {
   position: absolute;
-  top: 50%;
-  right: 1em; }
+  padding: 1em;
+  top: 30%;
+  right: -5em;
+  border: 2px solid black;
+  background-color: whitesmoke;
+  font-size: 1.5em;
+  font-weight: bold; }
+  #goNext:hover {
+    background-color: black;
+    color: whitesmoke;
+    border-color: whitesmoke; }
 
 #quit {
   position: absolute;
   top: -2.5em;
   right: -1.75em;
-  padding: 1em;
+  padding: .75em;
   height: 4em;
   width: 4em;
   -webkit-border-radius: 100%;
           border-radius: 100%;
-  border: 3px solid red;
+  border: 3px solid black;
   background-color: whitesmoke; }
+  #quit:hover {
+    color: whitesmoke;
+    background-color: black;
+    border-color: whitesmoke; }
 
